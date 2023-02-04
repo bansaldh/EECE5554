@@ -1,0 +1,8 @@
+prefix=/home/ubuntu20_04/EECE5554/LAB1/install
+
+Name: gps_driver
+Description: Description of gps_driver
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lgps_driver
+Requires: message_runtime roscpp rospy sensor_msgs std_msgs

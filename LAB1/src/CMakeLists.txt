@@ -51,6 +51,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate messages in the 'msg' folder
  add_message_files(
+   DIRECTORY gps_driver/msg
    FILES
    gps_msg.msg
  )
@@ -107,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   ##INCLUDE_DIRS include
-  ##LIBRARIES gps_driver
+  LIBRARIES gps_driver
   CATKIN_DEPENDS message_runtime roscpp rospy sensor_msgs std_msgs
   ##DEPENDS system_lib
 )
@@ -195,7 +196,7 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
-catkin_install_python(PROGRAMS scripts/gpsdriver.py
+catkin_install_python(PROGRAMS gps_driver/scripts/driver.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
