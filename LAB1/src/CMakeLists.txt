@@ -196,6 +196,7 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+
 catkin_install_python(PROGRAMS gps_driver/scripts/driver.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
