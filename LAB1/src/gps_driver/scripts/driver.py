@@ -47,6 +47,7 @@ def gps_driver():
 				s_UTM="%s,%s,%s,%s,%s,%s,%s,%s\n"%(frame_id,time1,UTM_coordinate[0],UTM_coordinate[1],UTM_coordinate[2],UTM_coordinate[3],data[9],data[8])
 				rospy.loginfo(msg)
 				f.write(s_UTM)	
+				#time handling
 				time1 = float(data[1])
 				seconds1 = (time1//10000)*3600 + ((time1%10000)//100 )* 60 + ((time1%10000)%100 )
 				time2 = rospy.Time.from_sec(seconds1)
