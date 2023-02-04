@@ -21,9 +21,10 @@ def gps_driver():
 	f=open("Name_of_file.txt",'w') #change the file name from the data file in hand
 	while(not rospy.is_shutdown()):
 		line = port.readline().decode('utf8','ignore')
-		if line[1:6] == 'GPGGA':
+		if line[1:6] == 'GPGGA': #GPGGA string parsing
 			data=line[6:].split(',')
 			if data[5]!='0':
+				# conversion of lat/lon to decimal
 				time1 = data[1]
 				lat=float(data[2][:2])+float(data[2][2:])/60.0
 				lat_dir=data[3]
@@ -41,6 +42,7 @@ def gps_driver():
 					alt=float(data[9]) #Altitude i Meters
 				hdop = data[8]
 				frame_id = "GPS1_frame"
+				# conversion of lat/lon to UTM
 				UTM_coordinate=utm.from_latlon(lat,lon)
 				s_UTM="%s,%s,%s,%s,%s,%s,%s,%s\n"%(frame_id,time1,UTM_coordinate[0],UTM_coordinate[1],UTM_coordinate[2],UTM_coordinate[3],data[9],data[8])
 				rospy.loginfo(msg)
