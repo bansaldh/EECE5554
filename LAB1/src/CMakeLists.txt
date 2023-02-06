@@ -197,7 +197,7 @@ include_directories(
 # )
 
 
-catkin_install_python(PROGRAMS gps_driver/scripts/driver.py
+catkin_install_python(PROGRAMS gps_driver/python/driver.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
