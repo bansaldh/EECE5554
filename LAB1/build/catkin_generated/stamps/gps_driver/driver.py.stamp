@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import rospy
 import serial
 import utm
@@ -9,12 +11,10 @@ from gps_driver.msg import gps_msg
 
 def gps_driver():
 	args = rospy.myargv(argv = sys.argv)
-	# gps_pub = rospy.Publisher('gps_message', gps_msg, queue_size=10)
-	gps_pub = rospy.Publisher('gps', gps_msg, queue_size=10)
+	gps_pub = rospy.Publisher('gps_message', gps_msg, queue_size=10)
 	msg=gps_msg()
 	rospy.init_node("gps_driver", anonymous=True)
 	rate = rospy.Rate(1)
-
 	port_c = args[1]
 	serial_port = rospy.get_param('port',port_c)# amke sure the serial port number is correct
 	serial_baud = 4800
@@ -23,12 +23,8 @@ def gps_driver():
 	f=open("Name_of_file.txt",'w') #change the file name from the data file in hand
 	while(not rospy.is_shutdown()):
 		line = port.readline().decode('utf8','ignore')
-
-		if "GPGGA" in line:
-		#if line[1:6] == 'GPGGA': #GPGGA string parsing
-			print("Entering")
+		if line[1:6] == 'GPGGA': #GPGGA string parsing
 			data=line[6:].split(',')
-
 			if data[5]!='0':
 				# conversion of lat/lon to decimal
 				time1 = data[1]
@@ -81,4 +77,3 @@ if __name__ == '__main__':
         gps_driver()
     except rospy.ROSInterruptException:
         pass
-
