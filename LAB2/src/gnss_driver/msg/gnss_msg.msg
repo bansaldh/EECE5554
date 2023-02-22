@@ -1,10 +1,10 @@
 Header Header
-float64 Latitude
-float64 Longitude
-float64 Altitude
-float64 HDOP
-float64 UTM_easting
-float64 UTM_northing
+float32 Latitude
+float32 Longitude
+float32 Altitude
+float32 HDOP
+float32 UTM_easting
+float32 UTM_northing
 string UTC
 int32 Zone
 int32 gps_quality

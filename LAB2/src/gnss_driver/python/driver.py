@@ -17,7 +17,7 @@ def gnss_driver():
 	rate = rospy.Rate(1)
 	serial_port = rospy.get_param('port', args[1])
 	# serial_port = rospy.get_param('port', '/dev/pts/5')
-	serial_baud = 57600
+	serial_baud = 4800
 	port = serial.Serial(serial_port,serial_baud,timeout=3.0)
 
 	f=open("Name_of_file.txt",'w') #change the file name from the data file in hand
