@@ -1,0 +1,11 @@
+<launch>
+	<arg name="port" />
+	<arg name="port_2" />
+	
+	<node name="imu_driver" pkg="sensor_fusion" type="driver_imu.py" args="$(arg port_2)" output="screen"> 
+		<param name="port_2" value="$(arg port_2)" />
+	</node>
+	<node name="gps_driver" pkg="sensor_fusion_gps" type="driver.py" args="$(arg port)" output="screen">
+		<param name="port" value="$(arg port)" />
+	</node>
+</launch>
